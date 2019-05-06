@@ -15,9 +15,9 @@ public class MsgSender {
     @Autowired
     AmqpTemplate amqpTemplate;
 
-
     public void sendMessage(Object message) {
         amqpTemplate.convertAndSend(MQConfig.QUEUE, message);
     }
+
 
 }

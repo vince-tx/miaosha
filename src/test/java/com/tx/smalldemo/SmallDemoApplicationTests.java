@@ -115,37 +115,4 @@ public class SmallDemoApplicationTests {
         });
     }
 
-    /**
-     * 用时217 ,未超发
-     *
-     * @throws Exception
-     */
-    @Test
-    public void rbmqTest() throws Exception {
-
-        ExecutorService executorService = Executors.newFixedThreadPool(20);
-        List<Callable<String>> list = new ArrayList<>();
-        Callable task;
-        for (int i = 0; i < 20; i++) {
-            task = () -> {
-                String s = service.deductAppleByRedisLuaScript();
-                return s;
-            };
-            list.add(task);
-        }
-        List<Future<String>> futures = executorService.invokeAll(list);
-        futures.stream().forEach(f -> {
-            try {
-                System.out.println(f.get());
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            }
-        });
-
-        Thread.sleep(2100);
-    }
-
-
 }

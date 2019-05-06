@@ -43,7 +43,6 @@ public class ThreadPoolManager {
             // todo 订单加入缓冲队列
             msgQueue.offer(((BusinessThread) r).getAcceptStr());
             System.out.println("系统任务忙，把订单交给（调度线程池）逐一处理，订单号：" + ((BusinessThread) r).getAcceptStr());
-
         }
     };
 
