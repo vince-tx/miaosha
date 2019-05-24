@@ -39,7 +39,7 @@ public class DelayConsumer {
         // 绑定
         channel.queueBind(queueName, DelayProducer.exchangeName, DelayProducer.routeKey);
 
-        // 声明一个消费者（关闭为支付订单的服务）
+        // 声明一个消费者（关闭未支付订单的服务）
         final Consumer consumer = new DefaultConsumer(channel) {
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties,
